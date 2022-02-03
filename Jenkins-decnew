@@ -18,13 +18,13 @@ pipeline{
         }
         stage("deploy-dev"){
             steps{
-                sshagent(['tomcat-new1']) {
+                sshagent(['tomcat-new']) {
                 sh """
-                    scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@:/home/ec2-us172.31.17.197er/apache-tomcat-9.0.58/webapps/
+                    scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@:/home/ec2-user172.31.28.48/apache-tomcat-9.0.58/webapps/
                     
-                    ssh ec2-user@172.31.17.197 /home/ec2-user/apache-tomcat-9.0.58/bin/shutdown.sh
+                    ssh ec2-user@172.31.28.48 /home/ec2-user/apache-tomcat-9.0.58/bin/shutdown.sh
                     
-                    ssh ec2-user@ /home/e172.31.17.197c2-user/apache-tomcat-9.0.58/bin/startup.sh
+                    ssh ec2-user@ /home/e172.31.28.48c2-user/apache-tomcat-9.0.58/bin/startup.sh
                 
                 """
             }
